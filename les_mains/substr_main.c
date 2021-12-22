@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   substr_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 17:44:30 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/21 11:21:58 by nade-la-         ###   ########.fr       */
+/*   Created: 2021/12/21 10:28:34 by nade-la-          #+#    #+#             */
+/*   Updated: 2021/12/21 10:29:11 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	main(void)
 {
-	char	*ptr;
+	char	s[25] = "nathalie";
 
-	ptr = s;
-	while (n-- > 0)
-		*ptr++ = 0;
+	printf("RESULT : %s\n", ft_substr(s, 2, 3));
 }

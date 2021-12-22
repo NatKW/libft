@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 11:52:50 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/14 17:04:07 by nade-la-         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:44:14 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ int	ft_atoi(const char *nptr)
 	while (nptr[i] && ((nptr[i] == ' ') || (nptr[i] >= '\t'
 				&& nptr[i] <= '\r')))
 		i++;
-	while (nptr[i] && (nptr[i] == '-' || nptr[i] == '+'))
+	if (nptr[i] == '-')
 	{
-		if (nptr[i] == '-')
-			sign = sign * -1;
+		sign = sign * -1;
 		i++;
 	}
+	else if (nptr[i] == '+')
+		i++;
 	result = 0;
 	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
 	{

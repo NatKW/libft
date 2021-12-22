@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 17:44:30 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/21 11:21:58 by nade-la-         ###   ########.fr       */
+/*   Created: 2021/12/21 16:30:35 by nade-la-          #+#    #+#             */
+/*   Updated: 2021/12/21 18:08:50 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ptr;
+	char	*new;
+	size_t	len_new;
 
-	ptr = s;
-	while (n-- > 0)
-		*ptr++ = 0;
+	len_new = (ft_strlen(s1) + ft_strlen(s2) + 1);
+	new = (char *)calloc (sizeof(char) * (len_new));
+	if (new == NULL)
+		return (NULL);
+	while (*s1 && *s2)
+	{
+		ft_memcpy(new, s1, len_new);
+		ft_strlcat(s1, s2, len_new);
+	}
+	return (new);
 }
