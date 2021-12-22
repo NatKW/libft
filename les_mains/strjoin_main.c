@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   strjoin_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 19:08:20 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/22 17:12:34 by nade-la-         ###   ########.fr       */
+/*   Created: 2021/12/22 13:15:24 by nade-la-          #+#    #+#             */
+/*   Updated: 2021/12/22 13:15:33 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	main(void)
 {
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		n = -n;
-		ft_putchar_fd('-', fd);
-	}	
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(((n % 10) + '0'), fd);
+	const char	*s1 = "bonjour ";
+	const char	*s2 = "Nathalie";
+	
+	printf("RESULT : %s\n", ft_strjoin(s1, s2));
 }
