@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 16:27:26 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/22 15:44:27 by nade-la-         ###   ########.fr       */
+/*   Updated: 2021/12/30 16:43:20 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	**ft_split(char const *s, char c);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
