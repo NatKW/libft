@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:40:25 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/31 17:34:56 by nade-la-         ###   ########.fr       */
+/*   Updated: 2021/12/31 18:06:54 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	count_words(char *s, char c)
 	{
 		while (*s && *s == c)
 			s++;
-		if (*s == c && *s != c)
+		if (*s != c)
 			count++;
-		s++;
-		while (*s != c && *s)
+		while (*s && *s != c)
 			s++;
 	}	
 	return (count);
@@ -38,6 +37,6 @@ int	main(void)
 	char	*s;
 
 	c = ' ';
-	s = " Sometimes you win sometimes you learn";
+	s = "Sometimes you win sometimes you learn ";
 	printf("%d", count_words(s, c));
 }
