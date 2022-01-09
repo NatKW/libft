@@ -6,13 +6,13 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:40:25 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/06 19:48:41 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/09 20:40:36 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int	count_words(char *s, char c)
+
+static int	ft_countwords(char *s, char c)
 {
 	int	count;
 
@@ -28,29 +28,51 @@ int	count_words(char *s, char c)
 	}	
 	return (count);
 }
-*/
+
+static char	*ft_cpyword(char *s, char c)
+{
+	size_t		i;
+	size_t		j;
+	char		*word;
+
+	i = 0;
+	j = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (word == NULL)
+		return (NULL);
+	if (j < i)
+		ft_memcpy(word, s, i);
+	return (word);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char 	**tab;
+	char	**tab;
 	int		i;
 	int		j;
 	int		k;
-	
-	i=	0;
+
+	i = 0;
 	j = 0;
-	while (s)
+	while (s[i] != '0' && j < 1)
 	{
-		while (s && s == c)
+		k = 0;
+		while (s[i] == c)
 			i++;
-		if (*s != c && *s != '\0')
-			 
-		while (*s && *s != c)
+		tab[j] = (char *)malloc(sizeof(char) * (ft_countwords(s, c) + 1));
+		if (tab[j] == NULL)
+			return (NULL);
+		while (s[i] != c && s[i] != '\0')
 		{
-			s++;
-			i++;
-		
+			tab[k++][j] = s[i++];
+			tab[k][j] ='\0';
+			j++;
+		}
+		tab[j] = '\0';
 	}
-	return (s2);
+	return (tab);
 }
 
 int	main(void)
@@ -59,8 +81,6 @@ int	main(void)
 	char	*s;
 
 	c = ' ';
-	s = "       Sometimes you   win   \nsometimes you learn      ";
-	printf("%d", len_words(s, c));
+	s = "Sometimes you   win   sometimes you learn";
+	printf("%s\n", ft_split(s, c));
 }
-
-
