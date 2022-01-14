@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:40:25 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/12 19:14:35 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/14 18:37:20 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,32 @@
 
 static void	ft_free(char **tab)
 {
-	while (**tab)
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
 	{
-		free(tab);
-		tab++;
+		free(tab[i]);
+		i++;
 	}
 	free(tab);
 }
 
-static int	ft_countwords(const char *s, char c)
+static size_t	ft_countwords(const char *s, char c)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	while (*s)
 	{
 		while (*s && *s == c)
 			s++;
-		if (*s != c && *s != '\0')
+		if (*s != c && *s)
+		{
 			count++;
-		while (*s && *s != c)
-			s++;
+			while (*s && *s != c)
+				s++;
+		}
 	}	
 	return (count);
 }
@@ -52,41 +57,40 @@ static char	*ft_cpyword(const char *s, char c)
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (word == NULL)
 		return (NULL);
-	if (j < i)
-		*word++ = *s++;
+	while (j < i)
+	{
+		word[j] = s[j];
+		j++;
+	}
+	word[j] = '\0';
 	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	int		w;
+	size_t	w;
 
-	tab = 0;
 	w = 0;
+	tab = (char **)malloc(sizeof(char *) * ((ft_countwords(s, c) + 1)));
+	if (!tab)
+		return (NULL);
 	while (*s)
 	{	
-		while (*s == c)
+		while (*s == c && *s)
 			s++;
-		tab = (char **)malloc(sizeof(char) * ((ft_countwords(s, c) + 1)));
-		if (!*s || tab[w] == NULL)
-			ft_free(tab);
-		while (*s != c && *s != '\0')
+		if (*s != c && *s)
 		{
-			*tab = ft_cpyword(s, c);
-			*tab[w] = '\0';
+			tab[w] = ft_cpyword(s, c);
+			if (!(tab[w]))
+			{
+				ft_free(tab);
+				return (NULL);
+			}
+			s = s + ft_strlen(tab[w]);
+			w++;
 		}
-		tab[w]++;
 	}
+	tab[w] = NULL;
 	return (tab);
-}
-
-int	main(void)
-{
-	char	c;
-	char	*s;
-
-	c = ' ';
-	s = "  Sometimes you   win sometimes you learn   ";
-	printf("%s\n", *ft_split(s, c));
 }
