@@ -1,58 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/15 19:22:32 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/19 12:56:45 by nade-la-         ###   ########.fr       */
+/*   Created: 2022/01/19 14:36:51 by nade-la-          #+#    #+#             */
+/*   Updated: 2022/01/19 19:18:11 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_lennbr(long int n)
-{	
-	int	len;
-
-	len = 0;
-	if (n < 0)
-		len++;
-	if (n == 0)
-		len = 1;
-	while (n)
-	{
-		len++;
-		n = n / 10;
-	}
-	return (len);
-}
-
-char	*ft_itoa(int n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char		*dest;
-	long int	number;
-	int			len;
+	unsigned int	i;
+	unsigned int	len;
+	char			*dest;
 
-	number = n;
-	len = ft_lennbr(number);
-	dest = (char *)malloc(sizeof(char) * len + 1);
-	if (!dest)
+	if (!s || !f)
 		return (NULL);
-	dest[len] = '\0';
-	if (number < 0)
-		number *= -1;
-	if (number >= 0)
+	len = ft_strlen(s);
+	dest = (char *)malloc(sizeof(char) * len + 1);
+	if (!(dest))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		while (len > 0)
-		{
-			dest[len - 1] = number % 10 + '0';
-			len--;
-			number = number / 10;
-		}
+		dest[i] = (*f)(i, s[i]);
+		i++;
 	}
-	if (n < 0)
-		dest[0] = '-';
+	dest[i] = '\0';
 	return (dest);
 }
