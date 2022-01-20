@@ -6,13 +6,13 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 15:43:13 by nade-la-          #+#    #+#             */
-/*   Updated: 2021/12/30 15:33:14 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:32:29 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check_set(char c, const char *set)
+static int	check_set(char c, const char *set)
 {
 	int	i;
 
