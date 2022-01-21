@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:40:25 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/21 17:47:24 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/21 19:19:05 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,8 @@ char	**ft_split(char const *s, char c)
 		{
 			tab[w] = ft_cpyword(s, c);
 			if (!(tab[w]))
-			{
 				ft_free(tab);
-				return (NULL);
-			}
-			s = s + ft_strlen(tab[w]);
-			w++;
+			s = s + ft_strlen(tab[w++]);
 		}
 	}
 	tab[w] = NULL;
