@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 15:43:13 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/20 17:32:29 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:45:09 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (s1[start] && check_set(s1[start], set))
 		start++;
 	end = ft_strlen(s1);
-	while (check_set(s1[end - 1], set))
+	while (end > start && check_set(s1[end - 1], set))
 		end--;
 	trimd = ft_substr(s1, start, (end - start));
 	return (trimd);

@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 16:27:26 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/19 15:56:56 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/21 18:01:31 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 # define LIBFT_H
 
 # include <unistd.h>
-# include <stdio.h>
-# include <stddef.h>
 # include <stdlib.h>
-# include <ctype.h>
-# include <string.h>
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);

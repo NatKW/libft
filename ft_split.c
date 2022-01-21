@@ -6,7 +6,7 @@
 /*   By: nade-la- <nade-la-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:40:25 by nade-la-          #+#    #+#             */
-/*   Updated: 2022/01/20 18:13:49 by nade-la-         ###   ########.fr       */
+/*   Updated: 2022/01/21 17:47:24 by nade-la-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	**ft_split(char const *s, char c)
 	size_t	w;
 
 	w = 0;
+	if (!s)
+		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * ((ft_countwords(s, c) + 1)));
 	if (!tab)
 		return (NULL);
